@@ -1,0 +1,22 @@
+https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-2017&pivots=cs1-bash
+docker pull microsoft/mssql-server-linux
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=!5F&svw1234' -e 'MSSQL_PID=Express' -p 1490:1433 --name=catalogdb microsoft/mssql-server-linux:latest
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=!5F&svw1234' -e 'MSSQL_PID=Express' -p 1490:1433 --name catalogdb  mcr.microsoft.com/mssql/server:2017-latest
+#list active container 
+docker ps -a
+#remove all images
+docker rm $(docker ps -a -f status=exited -f status=created -q)
+#connect with sql mgnt at localhost,1490  + credentials above
+sqlcmd -S localhost,1490 -U SA -P '!5F&svw1234'
+select name from sys.databases
+go
+#it: interactive command
+docker exec -it catalogdb /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '!5F&svw1234' -Q 'SELECT @@VERSION'
+# Microsoft.EntityFrameworkCore.Tools -Version 2.2.4, Enables these commonly used commands:
+Add-Migration
+Drop-Database
+Get-DbContext
+Scaffold-DbContext
+Script-Migrations
+Update-Database
+
