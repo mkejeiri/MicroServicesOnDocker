@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ProductCatalogApi.Data;
+using ProductCatalogApi.Domain.Repository;
 
 namespace ProductCatalogApi
 {
@@ -27,6 +28,8 @@ namespace ProductCatalogApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AppSettings>(Configuration);
+            services.AddScoped<ICatalogRepository, CatalogSqlServerRepository>();
             services.AddDbContext<CatalogDbContext>(options =>
                 options.UseSqlServer(Configuration["connectionString"]));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
