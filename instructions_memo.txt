@@ -23,5 +23,11 @@ Update-Database
 #first migrations 
  dotnet ef migrations add  intial_migrations -o .\Data\Migrations -c ProductCatalogApi.Data.CatalogDbContext
  dotnet ef migrations remove
+ #apply migration to the db
+ dotnet ef database update intial_migrations  -c ProductCatalogApi.Data.CatalogDbContext
 
-
+ #Why not putting the seeder inside the configure method in the startup class for dockerized system?
+ The configure method in the startup class is devoted to operate in the middleware pipeline! (aka components chain),
+ unlike in non dockerized system where we could call the seeder inside configure method, and due the problem encountered by Core,
+ the database might not ready in dockerized systems, for that reason Core 2.0 + recommends to inject directly
+ the db context for seeding in the program class (main methods).
