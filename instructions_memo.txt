@@ -20,3 +20,8 @@ Scaffold-DbContext
 Script-Migrations
 Update-Database
 
+#first migrations 
+ dotnet ef migrations add  intial_migrations -o .\Data\Migrations -c ProductCatalogApi.Data.CatalogDbContext
+ dotnet ef migrations remove
+
+

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductCatalogApi", "src\Se
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Script", "Script", "{27A23B40-A3EC-4ED9-B98E-9E3675BFD8A0}"
 	ProjectSection(SolutionItems) = preProject
-		Readme.txt = Readme.txt
+		instructions_memo.txt = instructions_memo.txt
 	EndProjectSection
 EndProject
 Global

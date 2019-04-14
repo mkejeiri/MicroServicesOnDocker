@@ -1,4 +1,6 @@
-﻿namespace ProductCatalogApi.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ProductCatalogApi.Domain.Entities
 {
     public class CatalogItem
     {
@@ -6,6 +8,7 @@
         public string Name { get; set; }
         public string Description { get; set; }
 
+        //[Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         public string PictureFileName { get; set; }
         public string PictureUrl { get; set; }

@@ -20,7 +20,7 @@ namespace ProductCatalogApi.Data.Extensions
 
         private static void ConfigureCatalogType(EntityTypeBuilder<CatalogType> entityTypeBuilder)
         {
-            entityTypeBuilder.ToTable("CatalogType");
+            entityTypeBuilder.ToTable("CatalogTypes");
             entityTypeBuilder.Property(c => c.Id)
                 .ForSqlServerUseSequenceHiLo("Catalog_type_hilo")
                 .HasMaxLength(100)
@@ -31,13 +31,13 @@ namespace ProductCatalogApi.Data.Extensions
 
         private static void ConfigureCatalogItem(EntityTypeBuilder<CatalogItem> entityTypeBuilder)
         {
-            entityTypeBuilder.ToTable("CatalogType");
+            entityTypeBuilder.ToTable("CatalogItems");
             entityTypeBuilder.Property(c => c.Id)
                 .ForSqlServerUseSequenceHiLo("Catalog_hilo")
                 .IsRequired();
             entityTypeBuilder.Property(c => c.Name).HasMaxLength(50).IsRequired();
             entityTypeBuilder.Property(c => c.Description).IsRequired();
-            entityTypeBuilder.Property(c => c.Price).IsRequired();
+            entityTypeBuilder.Property(c => c.Price).IsRequired().HasColumnType("decimal(18,2)"); ;
             entityTypeBuilder.Property(c => c.PictureUrl).IsRequired(false);
             entityTypeBuilder.Property(c => c.PictureFileName).IsRequired(false);
             entityTypeBuilder.HasOne<CatalogBrand>(c => c.CatalogBrand)
@@ -52,7 +52,7 @@ namespace ProductCatalogApi.Data.Extensions
 
         private static void ConfigureCatalogBrand(EntityTypeBuilder<CatalogBrand> entityTypeBuilder)
         {
-            entityTypeBuilder.ToTable("CatalogBrand");
+            entityTypeBuilder.ToTable("CatalogBrands");
             entityTypeBuilder.Property(c => c.Id)
                 .ForSqlServerUseSequenceHiLo("Catalog_brand_hilo")
                 .IsRequired();
