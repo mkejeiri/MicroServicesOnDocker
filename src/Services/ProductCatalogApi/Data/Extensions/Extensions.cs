@@ -38,7 +38,7 @@ namespace ProductCatalogApi.Data.Extensions
             entityTypeBuilder.Property(c => c.Name).HasMaxLength(50).IsRequired();
             entityTypeBuilder.Property(c => c.Description).IsRequired();
             entityTypeBuilder.Property(c => c.Price).IsRequired().HasColumnType("decimal(18,2)"); ;
-            entityTypeBuilder.Property(c => c.PictureUrl).IsRequired(false);
+            entityTypeBuilder.Property(c => c.PictureUri).IsRequired(false);
             entityTypeBuilder.Property(c => c.PictureFileName).IsRequired(false);
             entityTypeBuilder.HasOne<CatalogBrand>(c => c.CatalogBrand)
                 .WithMany()

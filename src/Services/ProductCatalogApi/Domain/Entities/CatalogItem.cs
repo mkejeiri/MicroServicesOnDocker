@@ -11,15 +11,12 @@ namespace ProductCatalogApi.Domain.Entities
         //[Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         public string PictureFileName { get; set; }
-        public string PictureUrl { get; set; }
+        public string PictureUri { get; set; }
 
         public int CatalogBrandId { get; set; }
         public int CatalogTypeId { get; set; }
 
         public CatalogBrand CatalogBrand { get; set; }
         public CatalogType CatalogType { get; set; }
-
-
-
     }
 }

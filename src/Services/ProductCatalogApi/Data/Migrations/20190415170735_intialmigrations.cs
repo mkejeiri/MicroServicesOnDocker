@@ -2,7 +2,7 @@
 
 namespace ProductCatalogApi.Data.Migrations
 {
-    public partial class intial_migrations : Migration
+    public partial class intialmigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,7 +51,7 @@ namespace ProductCatalogApi.Data.Migrations
                     Description = table.Column<string>(nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PictureFileName = table.Column<string>(nullable: true),
-                    PictureUrl = table.Column<string>(nullable: true),
+                    PictureUri = table.Column<string>(nullable: true),
                     CatalogBrandId = table.Column<int>(nullable: false),
                     CatalogTypeId = table.Column<int>(nullable: false)
                 },

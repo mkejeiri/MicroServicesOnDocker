@@ -9,8 +9,8 @@ using ProductCatalogApi.Data;
 namespace ProductCatalogApi.Data.Migrations
 {
     [DbContext(typeof(CatalogDbContext))]
-    [Migration("20190414090312_intial_migrations")]
-    partial class intial_migrations
+    [Migration("20190415170735_intialmigrations")]
+    partial class intialmigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,7 +59,7 @@ namespace ProductCatalogApi.Data.Migrations
 
                     b.Property<string>("PictureFileName");
 
-                    b.Property<string>("PictureUrl");
+                    b.Property<string>("PictureUri");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
