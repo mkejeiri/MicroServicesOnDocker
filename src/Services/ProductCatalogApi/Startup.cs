@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ProductCatalogApi.Data;
 using ProductCatalogApi.Domain.Repository;
+using Microsoft.OpenApi.Models;
 
 namespace ProductCatalogApi
 {
@@ -28,6 +29,13 @@ namespace ProductCatalogApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(swaggerGenOptions =>
+            {
+                swaggerGenOptions.SwaggerDoc("v1", new OpenApiInfo { Title = "ProductCatalogApi",
+                    Version = "v1",
+                    Description = "Microservice on docker for ProductCatalogApi"
+                });
+            });
             services.Configure<AppSettings>(Configuration);
             services.AddScoped<ICatalogRepository, CatalogSqlServerRepository>();
             services.AddDbContext<CatalogDbContext>(options =>
@@ -47,8 +55,12 @@ namespace ProductCatalogApi
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(swaggerUiOptions =>
+            {
+                swaggerUiOptions.SwaggerEndpoint($"/swagger/v1/swagger.json", $"ProductCatalogApi V1");
+            });
             app.UseMvc();
         }
     }

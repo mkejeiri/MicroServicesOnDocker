@@ -56,7 +56,7 @@ namespace ProductCatalogApi.Controllers
 
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> Items([FromQuery] int pageSize = 6, [FromQuery] int pageIndex = 0)
+        public async Task<IActionResult> GetItems([FromQuery] int pageSize = 6, [FromQuery] int pageIndex = 0)
         {
             string externalBaseUrl = _settings.Value.ExternalBaseUrl.Split(';')[0];
             var itemsDto = await _catalogRepository.GetPagedCatalogItemsAsync(pageIndex, pageSize);
@@ -70,7 +70,7 @@ namespace ProductCatalogApi.Controllers
 
         [HttpGet]
         [Route("[action]/like/{name:minlength(1)}")]
-        public async Task<IActionResult> Items(string name, [FromQuery] int pageSize = 6, [FromQuery] int pageIndex = 0)
+        public async Task<IActionResult> ItemsLikeName(string name, [FromQuery] int pageSize = 6, [FromQuery] int pageIndex = 0)
         {
             string externalBaseUrl = _settings.Value.ExternalBaseUrl.Split(';')[0];
             var itemsDto = await _catalogRepository.GetPagedCatalogItemsByNameAsync(name, pageIndex, pageSize);
@@ -85,7 +85,7 @@ namespace ProductCatalogApi.Controllers
         //GET api/catalog/items/type/1/brand/2?pagesize=4&pageindex=0
         [HttpGet]
         [Route("[action]/type/{typeId}/brand/{brandId}")]
-        public async Task<IActionResult> Items(int? typeId, int? brandId, [FromQuery] int pageSize = 6, [FromQuery] int pageIndex = 1)
+        public async Task<IActionResult> ItemsTypeBrand(int? typeId, int? brandId, [FromQuery] int pageSize = 6, [FromQuery] int pageIndex = 1)
         {
             if (pageIndex<1)
             {

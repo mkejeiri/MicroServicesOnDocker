@@ -31,3 +31,5 @@ Update-Database
  unlike in non dockerized system where we could call the seeder inside configure method, and due the problem encountered by Core,
  the database might not ready in dockerized systems, for that reason Core 2.0 + recommends to inject directly
  the db context for seeding in the program class (main methods).
+
+#Swagger : https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/master/README-v5.md
